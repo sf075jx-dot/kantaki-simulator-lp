@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>看多機居宅介護　料金シミュレーター | お手軽かんたん料金計算</title>
+    <title>かんたき あんしん料金なび | お手軽かんたん料金計算</title>
     <style>
         :root {
             --primary-color: #4db6ac; /* 優しいターコイズブルー（ミント系） */
@@ -62,7 +62,7 @@
             padding: 0 20px;
         }
 
-        /* カードセクション */
+        /* カード共通 */
         .card {
             background: #ffffff;
             border-radius: 16px;
@@ -107,6 +107,93 @@
             font-size: 0.85rem;
             color: #90a4ae;
             margin-top: 15px;
+        }
+
+        /* 使い方セクション */
+        .usage-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .usage-section h2 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .usage-scenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .scene-badge {
+            background: var(--primary-light);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .scene-badge h4 {
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .scene-badge p {
+            font-size: 0.85rem;
+            color: #546e7a;
+            margin-bottom: 0;
+        }
+
+        .usage-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: #f7fcfc;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #b2ebf2;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .step-content h3 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: #607d8b;
+            margin-bottom: 0;
         }
 
         /* アップデート履歴セクション */
@@ -222,8 +309,8 @@
             <!-- icon.png という名前で画像を同じフォルダに配置してください -->
             <img src="icon.png" alt="アプリアイコン" onerror="this.style.display='none';">
         </div>
-        <h1>看護小規模多機能型居宅介護　料金シミュレーター</h1>
-        <p>利用者さまやご家族へ、優しくスムーズに料金をご案内できるフロントアプリ</p>
+        <h1>かんたき あんしん料金なび</h1>
+        <p>ケアマネージャーの声から生まれた、いつでもかんたんに比較・説明できるシミュレーター</p>
     </header>
 
     <div class="container">
@@ -237,6 +324,52 @@
             </a>
             
             <div class="version-info">自動アップデート機能搭載</div>
+        </div>
+
+        <!-- 使い方セクション -->
+        <div class="usage-section">
+            <h2>アプリの使い方・活用シーン</h2>
+            
+            <!-- 大まかな利用シーン -->
+            <div class="usage-scenes">
+                <div class="scene-badge">
+                    <h4>📱 ご家族への説明に</h4>
+                    <p>タブレットやPC画面を一緒に見ながら納得感のあるご案内を</p>
+                </div>
+                <div class="scene-badge">
+                    <h4>🖨️ 印刷・お渡しに</h4>
+                    <p>計算結果をその場でPDF保存・印刷して控えとしてお渡し</p>
+                </div>
+                <div class="scene-badge">
+                    <h4>⚖️ プラン比較に</h4>
+                    <p>最大3つの条件を並べて違いをパッと比較検討</p>
+                </div>
+            </div>
+
+            <!-- 詳しい仕様・ステップ -->
+            <div class="usage-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>介護度と負担割合を選ぶ</h3>
+                        <p>基本となる要介護度（要支援〜要介護5など）と、1〜3割の負担割合をタップして選択します。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>加算項目やオプションを指定する</h3>
+                        <p>各種加算（日数や回数）や、自費・オプション項目がある場合は必要な数量を入力します。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>比較・印刷する</h3>
+                        <p>「比較に追加する」ボタンでカード化し、必要に応じて専用のPDF印刷や保存を行います。</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- アップデート履歴（JSONから自動で読み込まれます） -->
@@ -265,7 +398,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 看多機料金シミュレーター All Rights Reserved.</p>
+        <p>&copy; 2026 かんたき あんしん料金なび All Rights Reserved.</p>
     </footer>
 
     <script>

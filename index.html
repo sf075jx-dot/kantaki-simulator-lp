@@ -3,122 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>看多機 料金シミュレーター</title>
+    <title>看多機料金シミュレーター | お手軽かんたん料金計算</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f7f9fa;
+        :root {
+            --primary-color: #4db6ac; /* 優しいターコイズブルー（ミント系） */
+            --primary-light: #e0f2f1; /* 背景やアクセント用の薄い水色ミント */
+            --primary-dark: #00897b;  /* 引き締め用の深い緑系ターコイズ */
+            --text-color: #37474f;    /* 柔らかいダークグレー */
+            --bg-color: #f4fbfb;      /* 全体のふんわりした背景色 */
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
         }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, var(--primary-light), #ffffff);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .logo-area img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #607d8b;
+        }
+
+        /* メインコンテナ */
         .container {
             max-width: 800px;
             margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* カードセクション */
+        .card {
             background: #ffffff;
+            border-radius: 16px;
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        h1 {
-            color: #0056b3;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-size: 16px;
-            color: #666;
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
             margin-bottom: 30px;
-        }
-        .feature-box {
-            background: #eef4f8;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-        }
-        .feature-box h2 {
-            font-size: 18px;
-            color: #333;
-            margin-top: 0;
-        }
-        .feature-box ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        .feature-box li {
-            margin-bottom: 8px;
-        }
-        .download-area {
             text-align: center;
-            margin: 40px 0;
         }
+
+        .card h2 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            margin-bottom: 25px;
+            color: #546e7a;
+        }
+
+        /* ダウンロードボタン */
         .download-btn {
             display: inline-block;
-            background-color: #0066cc;
-            color: #ffffff;
-            padding: 16px 32px;
-            font-size: 18px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.2rem;
             font-weight: bold;
+            padding: 16px 40px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 102, 204, 0.2);
-            transition: background-color 0.2s;
+            box-shadow: 0 6px 20px rgba(77, 182, 172, 0.4);
+            transition: all 0.3s ease;
         }
+
         .download-btn:hover {
-            background-color: #004499;
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(77, 182, 172, 0.6);
         }
-        .note {
-            font-size: 13px;
-            color: #888;
+
+        .version-info {
+            font-size: 0.85rem;
+            color: #90a4ae;
             margin-top: 15px;
         }
+
+        /* 特徴セクション */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .feature-box h3 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            font-size: 0.9rem;
+            color: #78909c;
+        }
+
+        /* フッター */
         footer {
             text-align: center;
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding: 30px;
+            color: #b0bec5;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
+    <header>
+        <div class="logo-area">
+            <!-- 独自アイコン画像をここに配置 (icon.icoから書き出したpngなど) -->
+            <img src="icon.png" alt="アプリアイコン">
+        </div>
+        <h1>看多機（かんたき）料金シミュレーター</h1>
+        <p>利用者さまやご家族へ、優しくスムーズに料金をご案内できるフロントアプリ</p>
+    </header>
+
     <div class="container">
-        <h1>看護小規模多機能居宅介護 料金シミュレーター</h1>
-        <div class="subtitle">ケアマネジャーの皆様のプラン作成・複雑なマルチサービス料金計算をサポートする専用ツールです。</div>
-
-        <div class="feature-box">
-            <h2>主な特徴</h2>
-            <ul>
-                <li>基本料金から各種加算、実費オプション（距離計算など）まで一括で簡単シミュレーション。</li>
-                <li>インストールするだけで、インターネットがない環境でも快適に動作します。</li>
-                <li>制度改定や料金変更があっても、アプリが自動で最新の画面を維持します。</li>
-            </ul>
-        </div>
-
-        <div class="download-area">
-            <!-- ★ここにご自身のGitHubの最新版固定URLが設定されています -->
+        <!-- ダウンロードカード -->
+        <div class="card">
+            <h2>アプリをダウンロード</h2>
+            <p>ボタンを押して最新のインストーラーをダウンロードしてください。<br>（Windows 10 / 11 対応）</p>
+            
+            <!-- GitHub Releasesなどのダウンロードリンクを指定 -->
             <a href="https://github.com/sf075jx-dot/kantaki-simulator-lp/releases/latest/download/setup.exe" class="download-btn">
-                📥 最新版インストーラーをダウンロード (setup.exe)
+                📥 無料ダウンロード (setup.exe)
             </a>
-            <div class="note">対象OS: Windows 10 / 11 （容量: 数十MB程度）</div>
+            
+            <div class="version-info">最新バージョン: v1.0.0 ／ 自動アップデート機能搭載</div>
         </div>
 
-        <div style="margin-top: 30px;">
-            <h3>ご利用の流れ</h3>
-            <ol>
-                <li>上のボタンから <code>setup.exe</code> をダウンロードします。</li>
-                <li>ファイルをダブルクリックして、画面案内に沿ってインストールを完了させます。</li>
-                <li>デスクトップに追加されたアイコンからすぐに起動できます。</li>
-            </ol>
+        <!-- 特徴紹介 -->
+        <div class="features">
+            <div class="feature-box">
+                <h3>💡 かんたん操作</h3>
+                <p>介護度や加算を選ぶだけで、その場で分かりやすく料金を自動計算します。</p>
+            </div>
+            <div class="feature-box">
+                <h3>🌸 安心のやさしい画面</h3>
+                <p>利用者さまやご家族と一緒に画面を見ながら、透明性の高い説明が可能です。</p>
+            </div>
+            <div class="feature-box">
+                <h3>🔄 いつも最新に</h3>
+                <p>起動するたびに自動で最新の料金画面に更新されるため、メンテナンスフリーです。</p>
+            </div>
         </div>
-
-        <footer>
-            &copy; 2026 看多機業務効率化プロジェクト
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2026 看多機料金シミュレーター All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>

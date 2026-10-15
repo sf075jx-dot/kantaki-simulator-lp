@@ -40,6 +40,8 @@
             border-radius: 20px;
             margin-bottom: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            object-fit: contain;
+            background: #fff;
         }
 
         header h1 {
@@ -107,6 +109,75 @@
             margin-top: 15px;
         }
 
+        /* アップデート履歴セクション */
+        .updates-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .updates-card h2 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .update-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0f2f1;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .update-version {
+            font-weight: bold;
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .update-date {
+            font-size: 0.85rem;
+            color: #90a4ae;
+        }
+
+        .update-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 6px;
+        }
+
+        .update-details {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #607d8b;
+        }
+
+        .update-details li {
+            margin-bottom: 3px;
+        }
+
         /* 特徴セクション */
         .features {
             display: grid;
@@ -148,8 +219,8 @@
 
     <header>
         <div class="logo-area">
-            <!-- 独自アイコン画像をここに配置 (icon.icoから書き出したpngなど) -->
-            <img src="icon.png" alt="アプリアイコン">
+            <!-- icon.png という名前で画像を同じフォルダに配置してください -->
+            <img src="icon.png" alt="アプリアイコン" onerror="this.style.display='none';">
         </div>
         <h1>看多機（かんたき）料金シミュレーター</h1>
         <p>利用者さまやご家族へ、優しくスムーズに料金をご案内できるフロントアプリ</p>
@@ -161,12 +232,19 @@
             <h2>アプリをダウンロード</h2>
             <p>ボタンを押して最新のインストーラーをダウンロードしてください。<br>（Windows 10 / 11 対応）</p>
             
-            <!-- GitHub Releasesなどのダウンロードリンクを指定 -->
             <a href="https://github.com/sf075jx-dot/kantaki-simulator-lp/releases/latest/download/setup.exe" class="download-btn">
                 📥 無料ダウンロード (setup.exe)
             </a>
             
-            <div class="version-info">最新バージョン: v1.0.0 ／ 自動アップデート機能搭載</div>
+            <div class="version-info">自動アップデート機能搭載</div>
+        </div>
+
+        <!-- アップデート履歴（JSONから自動で読み込まれます） -->
+        <div class="updates-card">
+            <h2>アップデート履歴</h2>
+            <div id="update-list">
+                <p style="text-align: center; color: #90a4ae; font-size: 0.9rem;">読み込み中...</p>
+            </div>
         </div>
 
         <!-- 特徴紹介 -->
@@ -190,5 +268,40 @@
         <p>&copy; 2026 看多機料金シミュレーター All Rights Reserved.</p>
     </footer>
 
+    <script>
+        // updates.json から自動でアップデート履歴を読み込んで表示するスクリプト
+        async function loadUpdates() {
+            try {
+                const response = await fetch('updates.json?t=' + Date.now()); // キャッシュ防止用クエリ付き
+                if (!response.ok) throw new Error('データが見つかりません');
+                const updates = await response.json();
+                
+                const container = document.getElementById('update-list');
+                container.innerHTML = '';
+                
+                updates.forEach(item => {
+                    let detailsHtml = item.details.map(d => `<li>${d}</li>`).join('');
+                    
+                    const div = document.createElement('div');
+                    div.className = 'update-item';
+                    div.innerHTML = `
+                        <div class="update-header">
+                            <span class="update-version">Ver ${item.version}</span>
+                            <span class="update-date">${item.date}</span>
+                        </div>
+                        <div class="update-title">${item.title}</div>
+                        <ul class="update-details">
+                            ${detailsHtml}
+                        </ul>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (e) {
+                document.getElementById('update-list').innerHTML = '<p style="text-align: center; color: #90a4ae; font-size: 0.9rem;">アップデート情報の読み込みに失敗しました。</p>';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadUpdates);
+    </script>
 </body>
 </html>

@@ -83,6 +83,38 @@
             color: #546e7a;
         }
 
+        /* ダウンロード注意書きのスタイル */
+        .download-notice {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #b2ebf2;
+            font-size: 0.85rem;
+            color: #546e7a;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .notice-main {
+            margin-bottom: 6px;
+            color: var(--primary-dark);
+        }
+
+        .notice-sub {
+            font-size: 0.8rem;
+            color: #78909c;
+        }
+
+        .notice-sub a {
+            color: #00acc1;
+            font-weight: bold;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .notice-sub a:hover {
+            color: var(--primary-dark);
+        }
+
         /* ダウンロードボタン */
         .download-btn {
             display: inline-block;
@@ -324,6 +356,18 @@
             </a>
             
             <div class="version-info">自動アップデート機能搭載</div>
+
+            <!-- ★ここから追記：セキュリティ・ブラウザに関する注記 -->
+            <div class="download-notice">
+                <p class="notice-main">
+                    💡 Windowsのセキュリティ仕様により、<strong>Google Chrome</strong>でのダウンロードを推奨しております。
+                </p>
+                <p class="notice-sub">
+                    ※ダウンロード時や実行時にセキュリティソフト・SmartScreenの警告が表示される場合があります。<br>
+                    <a href="download-help.html" target="_blank" rel="noopener noreferrer">セキュリティ警告が表示された場合はこちら（対処方法）</a>
+                </p>
+            </div>
+            <!-- ★ここまで追記 -->
         </div>
 
         <!-- 使い方セクション -->

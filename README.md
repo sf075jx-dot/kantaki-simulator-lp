@@ -1,1 +1,0 @@
-Kantaki Simulator

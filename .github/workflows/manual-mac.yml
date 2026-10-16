@@ -22,12 +22,34 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install pyinstaller
 
-      - name: Build with PyInstaller
+      - name: Build with PyInstaller (including web assets)
         run: |
-          pyinstaller --noconfirm --onedir --windowed main.py
+          pyinstaller --noconfirm --onedir --windowed --add-data "web:web" main.py
+
+      - name: Create DMG Installer
+        run: |
+          # 1. 便利なdmg作成ツール（create-dmg）をインストール
+          brew install create-dmg
+
+          # 2. 配布用の見栄えを整えて .dmg ファイルを作成する
+          create-dmg \
+            --volname "Kantaki Simulator Installer" \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --icon-size 100 \
+            --icon "main.app" 175 120 \
+            --hide-extension "main.app" \
+            --app-drop-link 425 120 \
+            "KantakiSimulator-Installer.dmg" \
+            "dist/main.app"
+
+      - name: Organize artifact
+        run: |
+          mkdir -p installer_output
+          mv KantakiSimulator-Installer.dmg installer_output/
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: KantakiSimulator-Mac
-          path: dist/
+          name: KantakiSimulator-Mac-Installer
+          path: installer_output/

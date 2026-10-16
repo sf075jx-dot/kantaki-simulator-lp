@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダウンロード・起動時のセキュリティ警告について | かんたき あんしん料金なび</title>
+    <style>
+        :root {
+            --primary-color: #4db6ac;
+            --primary-light: #e0f2f1;
+            --primary-dark: #00897b;
+            --text-color: #37474f;
+            --bg-color: #f4fbfb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-light), #ffffff);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .help-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .help-card h2 {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .help-card p {
+            font-size: 0.95rem;
+            color: #546e7a;
+            margin-bottom: 15px;
+        }
+
+        .step-box {
+            background: #f7fcfc;
+            border: 1px solid #b2ebf2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .step-box h3 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-box ol {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #37474f;
+        }
+
+        .step-box li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-text {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .back-link a:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #b0bec5;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>セキュリティ警告が表示された場合の対処方法</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="help-card">
+            <h2>安全性の確認について</h2>
+            <p>
+                「かんたき あんしん料金なび」はウイルスや悪意のあるプログラムを含まない安全なソフトウェアですが、
+                デジタル署名のない新規アプリであるため、Windowsやブラウザ（Edge・Chrome等）のセキュリティ機能によって警告が表示される場合がございます。
+            </p>
+            <p>以下の手順に沿って操作いただくことで、正常にインストール・起動していただけます。</p>
+        </div>
+
+        <!-- パターン1：ブラウザダウンロード時 -->
+        <div class="help-card">
+            <h2>1. ブラウザでダウンロードがブロックされた場合</h2>
+            
+            <div class="step-box">
+                <h3>Google Chrome の場合</h3>
+                <ol>
+                    <li>画面右上のダウンロード履歴に「安全にダウンロードできません」等の警告が表示された場合、該当の通知枠をクリックまたはホバーします。</li>
+                    <li>「三点リーダー（…）」または詳細オプションから <span class="highlight-text">「保存」</span> または <span class="highlight-text">「継続」</span> を選択してください。</li>
+                </ol>
+            </div>
+
+            <div class="step-box">
+                <h3>Microsoft Edge の場合</h3>
+                <ol>
+                    <li>ダウンロード欄に「一般的にダウンロードされていません」と表示された場合、ファイル名の横にある <span class="highlight-text">「…」（詳細）</span> をクリックします。</li>
+                    <li>メニューから <span class="highlight-text">「保存」</span> をクリックします。</li>
+                    <li>確認画面が表示されるので、さらに <span class="highlight-text">「詳細表示」</span> を開き、<span class="highlight-text">「保持する」</span> を選択します。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- パターン2：Windows起動時 -->
+        <div class="help-card">
+            <h2>2. 実行時に「WindowsによってPCが保護されました」と出た場合</h2>
+            <p>インストーラー（setup.exe）をダブルクリックした際、青い画面（Windows Defender SmartScreen）が表示される場合があります。</p>
+            
+            <div class="step-box">
+                <h3>手順</h3>
+                <ol>
+                    <li>画面内の説明文にある <span class="highlight-text">「詳細情報」</span> というリンクをクリックします。</li>
+                    <li>発行元などの情報が表示されると同時に、右下に <span class="highlight-text">「実行」</span> ボタンが出現します。</li>
+                    <li><span class="highlight-text">「実行」</span> ボタンをクリックすると、通常通りセットアップ画面が起動します。</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← トップページ（ダウンロード）に戻る</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 かんたき あんしん料金なび All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

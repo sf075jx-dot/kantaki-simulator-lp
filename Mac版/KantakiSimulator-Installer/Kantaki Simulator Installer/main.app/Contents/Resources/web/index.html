@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>利用料金シミュレーション</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-area">
+                <img id="app-logo" src="" alt="ロゴ" style="height: 32px; margin-right: 12px; object-fit: contain; display: none;" onerror="this.style.display='none';">
+                <h1 id="header-title">利用料金シミュレーション</h1>
+            </div>
+            <div>
+                <button class="btn btn-secondary" onclick="resetForm()">条件をリセット</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- 左側：入力パネル -->
+            <div class="panel input-panel">
+                <div class="input-scroll-area">
+                    
+                    <!-- 1. 介護度選択 -->
+                    <div class="accordion-header" onclick="toggleAccordion('care-section', this)">
+                        <h2>1. 介護度選択 <span class="required">必須</span></h2>
+                        <span class="accordion-icon open">▼</span>
+                    </div>
+                    <div id="care-section" class="accordion-content">
+                        <div id="care-level-container" class="care-buttons-group">
+                            <!-- 動的生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 2. 負担割合選択 -->
+                    <div class="accordion-header" onclick="toggleAccordion('burden-section', this)">
+                        <h2>2. 負担割合 <span class="required">必須</span></h2>
+                        <span class="accordion-icon open">▼</span>
+                    </div>
+                    <div id="burden-section" class="accordion-content">
+                        <div id="burden-ratio-container" class="burden-buttons-group">
+                            <!-- 動的生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 3. 加算項目選択 -->
+                    <div class="accordion-header" onclick="toggleAccordion('additions-section', this)">
+                        <h2>3. 各種加算項目 <span id="additions-badge" class="accordion-badge">選択: 0件</span></h2>
+                        <span class="accordion-icon open">▼</span>
+                    </div>
+                    <div id="additions-section" class="accordion-content">
+                        <div id="additions-container" class="addition-buttons-group">
+                            <!-- 動的生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 4. オプション選択 -->
+                    <div class="accordion-header" onclick="toggleAccordion('options-section', this)">
+                        <h2>4. 自費・オプション <span id="options-badge" class="accordion-badge">選択: 0件</span></h2>
+                        <span class="accordion-icon open">▼</span>
+                    </div>
+                    <div id="options-section" class="accordion-content">
+                        <div id="options-container" class="options-list">
+                            <!-- 動的生成 -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="addComparison()">比較に追加する</button>
+                </div>
+            </div>
+
+            <!-- 右側：シミュレーション結果カード比較エリア -->
+            <div class="panel" style="background: #f4fbfb; box-shadow: none; padding: 0;">
+                <div id="comparison-cards" class="cards-container">
+                    <div class="empty-state">左側の条件を設定し、「比較に追加する」を押してください。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 画面右下にひっそり佇む隠し管理者ボタン（歯車） -->
+    <button class="stealth-admin-btn" onclick="openAdminAuth()" title="管理者設定">⚙️</button>
+
+    <!-- 管理者認証モーダル -->
+    <div id="auth-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:#fff; padding:25px; border-radius:8px; width:320px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            <h3 style="margin-bottom:12px; color:#00838f; font-size:16px;">管理者パスワード認証</h3>
+            <p style="font-size:12px; color:#666; margin-bottom:12px;">設定を変更するにはパスワードを入力してください。</p>
+            <input type="password" id="admin-pass-input" placeholder="パスワード" style="width:100%; padding:8px; border:1px solid #b2ebf2; border-radius:4px; margin-bottom:15px;">
+            <div style="display:flex; justify-content:flex-end; gap:8px;">
+                <button class="btn btn-secondary" onclick="closeAuthModal()">キャンセル</button>
+                <button class="btn btn-primary" style="width:auto; padding:8px 16px;" onclick="verifyAdmin()">認証</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 設定編集モーダル -->
+    <div id="config-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:#fff; padding:25px; border-radius:8px; width:700px; max-height:90vh; overflow-y:auto; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            <h3 style="margin-bottom:15px; color:#00838f; font-size:18px; border-bottom:2px solid #00acc1; padding-bottom:6px;">システム設定管理</h3>
+            
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">施設名</label>
+                <input type="text" id="edit-facility-name" style="width:100%; padding:6px; border:1px solid #b2ebf2; border-radius:4px;">
+            </div>
+
+            <!-- ロゴ設定エリア（削除ボタンを追加） -->
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">会社・施設ロゴ画像</label>
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap: wrap;">
+                    <img id="edit-logo-preview" src="" alt="ロゴプレビュー" style="height: 36px; max-width: 120px; object-fit: contain; border: 1px solid #b2ebf2; border-radius: 4px; display: none; background: #fff; padding: 2px;">
+                    <input type="file" id="edit-logo-file" accept="image/png, image/jpeg, image/jpg" onchange="previewLogoFile(event)" style="font-size: 12px;">
+                    <!-- ロゴ削除ボタン -->
+                    <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="removeLogo()">ロゴを削除</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">管理者パスワード変更</label>
+                <input type="text" id="edit-admin-password" placeholder="変更する場合のみ入力" style="width:100%; padding:6px; border:1px solid #b2ebf2; border-radius:4px; font-size:13px;">
+                <span style="font-size:11px; color:#78909c; display:block; margin-top:3px;">※空欄のままにすると現在のパスワードが維持されます。</span>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">加算項目の計算扱い（一括設定）</label>
+                <select id="edit-addition-mode" style="width:100%; padding:6px; border:1px solid #b2ebf2; border-radius:4px; font-size:13px;">
+                    <option value="insurance">介護保険の対象とする（負担割合をかける）</option>
+                    <option value="self">すべて適用外・全額自費とする（100%自己負担）</option>
+                </select>
+            </div>
+
+            <!-- 負担割合設定 -->
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">負担割合マスタ</label>
+                <div id="edit-burden-ratios-container" style="display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+
+            <!-- 介護度設定 -->
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:5px;">介護度・基本料金マスタ</label>
+                <div id="edit-care-levels-container" style="display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+
+            <!-- 加算項目設定 -->
+            <div style="margin-bottom:15px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <label style="font-weight:bold; font-size:13px;">加算項目マスタ（ドラッグで並び替え可）</label>
+                    <button class="btn btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="addAdditionRow()">＋ 行を追加</button>
+                </div>
+                <div id="edit-additions-container" style="display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+
+            <!-- オプション設定 -->
+            <div style="margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <label style="font-weight:bold; font-size:13px;">オプション項目マスタ（ドラッグで並び替え可）</label>
+                    <button class="btn btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="addOptionRow()">＋ 行を追加</button>
+                </div>
+                <div id="edit-options-container" style="display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:8px; border-top:1px solid #eee; padding-top:15px;">
+                <button class="btn btn-secondary" onclick="closeConfigModal()">キャンセル</button>
+                <button class="btn btn-primary" style="width:auto; padding:8px 20px;" onclick="saveNewConfig()">保存して適用</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+{
+  "facility_name": "施設名",
+  "admin_password": "admin",
+  "burden_ratios": [
+    {
+      "id": "ratio_1",
+      "name": "1割",
+      "rate": 0.1
+    },
+    {
+      "id": "ratio_2",
+      "name": "2割",
+      "rate": 0.2
+    },
+    {
+      "id": "ratio_3",
+      "name": "3割",
+      "rate": 0.3
+    }
+  ],
+  "care_levels": [
+    {
+      "id": "level_1",
+      "name": "要介護1",
+      "base_fee": 124470
+    },
+    {
+      "id": "level_2",
+      "name": "要介護2",
+      "base_fee": 174150
+    },
+    {
+      "id": "level_3",
+      "name": "要介護3",
+      "base_fee": 244810
+    },
+    {
+      "id": "level_4",
+      "name": "要介護4",
+      "base_fee": 277660
+    },
+    {
+      "id": "level_5",
+      "name": "要介護5",
+      "base_fee": 314080
+    }
+  ],
+  "additions": [
+    {
+      "id": "add_initial",
+      "name": "初期加算",
+      "unit_price": 30,
+      "unit_type": "days"
+    },
+    {
+      "id": "add_1791973823887",
+      "name": "認知症加算Ⅰ",
+      "unit_price": 920,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973833292",
+      "name": "認知症加算Ⅱ",
+      "unit_price": 890,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973834184",
+      "name": "認知症加算Ⅲ",
+      "unit_price": 760,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973834711",
+      "name": "認知症加算Ⅳ",
+      "unit_price": 460,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973835332",
+      "name": "若年性認知症利用者受入加算",
+      "unit_price": 800,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973835917",
+      "name": "栄養アセスメント加算",
+      "unit_price": 50,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973896459",
+      "name": "栄養改善体制加算",
+      "unit_price": 200,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973897193",
+      "name": "緊急時対応加算",
+      "unit_price": 774,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973897713",
+      "name": "退院時共同指導加算",
+      "unit_price": 600,
+      "unit_type": "times"
+    },
+    {
+      "id": "add_1791973898162",
+      "name": "専門管理加算",
+      "unit_price": 250,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973898656",
+      "name": "ターミナルケア加算",
+      "unit_price": 2500,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973899091",
+      "name": "遠隔死亡診断補助加算",
+      "unit_price": 150,
+      "unit_type": "times"
+    },
+    {
+      "id": "add_1791973899945",
+      "name": "看護体制強化加算Ⅰ",
+      "unit_price": 3000,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791973998730",
+      "name": "看護体制強化加算Ⅱ",
+      "unit_price": 2500,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974006156",
+      "name": "訪問体制強化加算",
+      "unit_price": 1000,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974006657",
+      "name": "総合マネジメント体制強化加算Ⅰ",
+      "unit_price": 1200,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974007190",
+      "name": "総合マネジメント体制強化加算Ⅱ",
+      "unit_price": 800,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974048785",
+      "name": "科学的介護推進体制加算",
+      "unit_price": 40,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974049334",
+      "name": "生産性向上推進体制加算Ⅰ",
+      "unit_price": 100,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974049859",
+      "name": "生産性向上推進体制加算Ⅱ",
+      "unit_price": 10,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974108870",
+      "name": "サービス提供体制加算Ⅰ",
+      "unit_price": 25,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974110243",
+      "name": "サービス提供体制加算Ⅱ",
+      "unit_price": 21,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974124312",
+      "name": "サービス提供体制加算Ⅲ",
+      "unit_price": 12,
+      "unit_type": "month"
+    },
+    {
+      "id": "add_1791974787832",
+      "name": "介護職員等処遇改善加算Ⅰ",
+      "unit_price": 14.9,
+      "unit_type": "percent"
+    },
+    {
+      "id": "add_1791974834616",
+      "name": "介護職員等処遇改善加算Ⅱ",
+      "unit_price": 14.6,
+      "unit_type": "percent"
+    },
+    {
+      "id": "add_1791974835517",
+      "name": "介護職員等処遇改善加算Ⅲ",
+      "unit_price": 13.4,
+      "unit_type": "percent"
+    },
+    {
+      "id": "add_1791974836057",
+      "name": "介護職員等処遇改善加算Ⅳ",
+      "unit_price": 10.4,
+      "unit_type": "percent"
+    }
+  ],
+  "options": [
+    {
+      "id": "stay",
+      "name": "宿泊利用費（1泊）",
+      "unit_price": 3000,
+      "unit_type": "times"
+    },
+    {
+      "id": "meal_breakfast",
+      "name": "朝食（1食）",
+      "unit_price": 600,
+      "unit_type": "times"
+    },
+    {
+      "id": "meal_lunch",
+      "name": "昼食（1食）",
+      "unit_price": 600,
+      "unit_type": "times"
+    },
+    {
+      "id": "meal_dinner",
+      "name": "夕食（1食）",
+      "unit_price": 600,
+      "unit_type": "times"
+    },
+    {
+      "id": "opt_1791973758126",
+      "name": "おやつ",
+      "unit_price": 100,
+      "unit_type": "times"
+    },
+    {
+      "id": "opt_1791973769249",
+      "name": "洗濯",
+      "unit_price": 100,
+      "unit_type": "times"
+    },
+    {
+      "id": "opt_1791975090495",
+      "name": "送迎(通院・生活支援)",
+      "unit_price": 60,
+      "unit_type": "distance"
+    },
+    {
+      "id": "opt_1791975117192",
+      "name": "送迎(家族同乗・片道)",
+      "unit_price": 1000,
+      "unit_type": "times"
+    }
+  ],
+  "logo": ""
+}

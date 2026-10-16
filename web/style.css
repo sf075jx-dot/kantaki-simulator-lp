@@ -1,0 +1,562 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+body {
+    background-color: #f4fbfb;
+    color: #2d3748;
+    font-size: 14px;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.app-header {
+    background: #00acc1;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,172,193,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.app-header h1 {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.input-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+}
+
+.input-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    padding-bottom: 20px;
+}
+
+.panel h2 {
+    font-size: 15px;
+    color: #00838f;
+    border-bottom: 2px solid #26c6da;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #f0f7f7;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-top: 20px;
+    border: 1px solid #b2ebf2;
+    transition: background 0.2s;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.accordion-header:hover {
+    background: #e0f7fa;
+}
+
+.accordion-header h2 {
+    border-bottom: none;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-badge {
+    font-size: 11px;
+    background: #00acc1;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+.accordion-icon {
+    font-size: 12px;
+    color: #00838f;
+    transition: transform 0.2s;
+}
+
+.accordion-icon.closed {
+    transform: rotate(-90deg);
+}
+
+.accordion-content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accordion-content.collapsed {
+    display: none;
+}
+
+.panel h2:first-child {
+    margin-top: 0;
+}
+
+.required {
+    background: #e53935;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.care-buttons-group {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 15px;
+    margin-top: 12px;
+}
+
+.care-btn {
+    background: #f7fcfc;
+    border: 1px solid #b2ebf2;
+    border-radius: 6px;
+    padding: 10px 2px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    color: #00838f;
+    font-size: 13px;
+}
+
+.care-btn:hover {
+    background: #e0f7fa;
+    border-color: #26c6da;
+}
+
+.care-btn.active {
+    background: #00acc1;
+    color: #fff;
+    border-color: #00838f;
+    box-shadow: 0 2px 4px rgba(0,172,193,0.3);
+}
+
+.burden-buttons-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 15px;
+    margin-top: 12px;
+}
+
+.burden-btn {
+    background: #f7fcfc;
+    border: 1px solid #b2ebf2;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    color: #00838f;
+}
+
+.burden-btn:hover {
+    background: #e0f7fa;
+    border-color: #26c6da;
+}
+
+.burden-btn.active {
+    background: #00acc1;
+    color: #fff;
+    border-color: #00838f;
+    box-shadow: 0 2px 4px rgba(0,172,193,0.3);
+}
+
+.addition-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.addition-card {
+    background: #f7fcfc;
+    border: 1px solid #b2ebf2;
+    border-radius: 6px;
+    padding: 10px 12px;
+    transition: all 0.2s;
+}
+
+.addition-card.active {
+    background: #e0f7fa;
+    border-color: #00acc1;
+    box-shadow: inset 0 0 0 1px #00acc1;
+}
+
+.addition-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.addition-info .addition-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #00838f;
+}
+
+.addition-info .addition-price {
+    font-size: 11px;
+    color: #78909c;
+}
+
+.addition-status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #eceff1;
+    color: #78909c;
+}
+
+.addition-card.active .addition-status {
+    background: #00acc1;
+    color: #fff;
+}
+
+.addition-count-area {
+    display: none;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #b2ebf2;
+    font-size: 12px;
+    color: #00838f;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.addition-card.active .addition-count-area.show-count {
+    display: flex;
+}
+
+.addition-count-area input {
+    width: 60px;
+    padding: 4px;
+    text-align: right;
+    border: 1px solid #b2ebf2;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-buttons {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 15px 0;
+    border-top: 1px solid #b2ebf2;
+    margin-top: auto;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary {
+    background: #00acc1;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #00838f;
+}
+
+.btn-secondary {
+    background: #eceff1;
+    color: #37474f;
+    font-size: 12px;
+}
+
+.btn-secondary:hover {
+    background: #cfd8dc;
+}
+
+.btn-print {
+    background: #e53935;
+    color: #fff;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn-print:hover {
+    background: #c62828;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #90a4ae;
+    border: 2px dashed #b2ebf2;
+    border-radius: 8px;
+}
+
+.simulation-card {
+    background: #fff;
+    border: 1px solid #b2ebf2;
+    border-radius: 8px;
+    padding: 18px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0f7fa;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #00838f;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #e53935;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.summary-table {
+    width: 100%;
+    margin-bottom: 12px;
+    border-collapse: collapse;
+}
+
+.summary-table th, .summary-table td {
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px dashed #e0f7fa;
+}
+
+.summary-table td:last-child {
+    text-align: right;
+}
+
+.total-box {
+    background: #e0f7fa;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: right;
+    margin-bottom: 12px;
+}
+
+.total-label {
+    font-size: 11px;
+    color: #00838f;
+}
+
+.total-amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e53935;
+}
+
+.stealth-admin-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #b0bec5;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+.stealth-admin-btn:hover {
+    opacity: 1;
+}
+
+.edit-row {
+    display: grid;
+    grid-template-columns: 24px 1fr 100px 120px 30px;
+    gap: 6px;
+    align-items: center;
+    background: #f7fcfc;
+    padding: 6px;
+    border: 1px solid #b2ebf2;
+    border-radius: 4px;
+}
+
+.edit-row input, .edit-row select {
+    padding: 4px;
+    border: 1px solid #b2ebf2;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.drag-handle {
+    cursor: grab;
+    text-align: center;
+    color: #78909c;
+}
+
+.delete-row-btn {
+    background: none;
+    border: none;
+    color: #e53935;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+@media print {
+    /* 印刷時の用紙設定・背景色リセット */
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 【最重要】印刷対象（.simulation-card.printing）以外の画面要素をすべて強制非表示にする */
+    body > *:not(.app-container),
+    .app-header,
+    .app-container > header,
+    .main-content > .panel:not(:has(.simulation-card.printing)),
+    .input-panel,
+    .sidebar,
+    .stealth-admin-btn,
+    .btn-container,
+    .action-buttons,
+    .modal,
+    button {
+        display: none !important;
+    }
+
+    /* アプリコンテナ自体のレイアウトを解除し、余白をなくす */
+    .app-container {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .main-content {
+        display: block !important;
+        grid-template-columns: none !important;
+        gap: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .cards-container {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 印刷対象外のカードは非表示 */
+    .simulation-card:not(.printing) {
+        display: none !important;
+    }
+
+    /* 印刷対象のカード（.printing）のみを紙面いっぱいに綺麗に表示 */
+    .simulation-card.printing {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        page-break-inside: avoid !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    /* 印刷時に必要な内部要素の保護 */
+    .dynamic-print-header,
+    .dynamic-print-seal,
+    .card-header,
+    .card-body {
+        display: block !important;
+        visibility: visible !important;
+    }
+}

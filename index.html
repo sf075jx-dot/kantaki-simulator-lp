@@ -234,7 +234,7 @@
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
-            margin-top: 40px; /* 特徴セクションとの間にしっかり余白を確保 */
+            margin-top: 40px;
             margin-bottom: 30px;
             text-align: left;
         }
@@ -339,7 +339,6 @@
 
     <header>
         <div class="logo-area">
-            <!-- icon.png という名前で画像を同じフォルダに配置してください -->
             <img src="icon.png" alt="アプリアイコン" onerror="this.style.display='none';">
         </div>
         <h1>かんたき あんしん料金なび</h1>
@@ -355,37 +354,36 @@
             
             <!-- 2つのボタンを横並びにするコンテナ -->
             <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
-                <!-- Windows版ボタン（リポジトリ内の downloads/setup.exe を直リンク） -->
+                <!-- Windows版ボタン -->
                 <a href="https://raw.githubusercontent.com/sf075jx-dot/kantaki-simulator-lp/main/downloads/setup.exe" class="download-btn win-btn" style="background-color: #0078D4; box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);">
                     🪟 Windows版 (setup.exe)
                 </a>
-                
-               
             </div>
 
             <!-- マニュアルPDFダウンロードボタン -->
-　　　　　　 <div style="text-align: center; margin: 40px 0;">
+            <div style="text-align: center; margin: 30px 0 10px 0;">
                 <a href="manual.pdf" target="_blank" style="
-                   display: inline-flex;
-                   align-items: center;
-                   gap: 10px;
-                   background: linear-gradient(135deg, #00838f, #00acc1);
-                   color: #ffffff;
-                   font-family: 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
-                   font-size: 16px;
-                   font-weight: bold;
-                   padding: 14px 28px;
-                   border-radius: 30px;
-                   text-decoration: none;
-                   box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
-                   transition: transform 0.2s, box-shadow 0.2s;
-                   " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 172, 193, 0.4)';" 
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: linear-gradient(135deg, #00838f, #00acc1);
+                    color: #ffffff;
+                    font-family: 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 14px 28px;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
+                    transition: transform 0.2s, box-shadow 0.2s;
+                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 172, 193, 0.4)';" 
                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 172, 193, 0.3)';">
-                   <span style="font-size: 20px;">📥</span>
-                   <span>かんたき あんしん料金なび 操作マニュアル（PDF）をダウンロード</span>
+                    <span style="font-size: 20px;">📥</span>
+                    <span>かんたき あんしん料金なび 操作マニュアル（PDF）をダウンロード</span>
                 </a>
                 <p style="font-size: 12px; color: #78909c; margin-top: 8px;">A4横・全8ページ（実務算定ルール・管理者設定ガイド付き）</p>
             </div>
+
             <!-- セキュリティ・ブラウザに関する注記 -->
             <div class="download-notice">
                 <p class="notice-main">
@@ -402,7 +400,6 @@
         <div class="usage-section">
             <h2>アプリの使い方・活用シーン</h2>
             
-            <!-- 大まかな利用シーン -->
             <div class="usage-scenes">
                 <div class="scene-badge">
                     <h4>📱 ご家族への説明に</h4>
@@ -418,7 +415,6 @@
                 </div>
             </div>
 
-            <!-- 詳しい仕様・ステップ -->
             <div class="usage-steps">
                 <div class="step-item">
                     <div class="step-number">1</div>
@@ -460,7 +456,7 @@
             </div>
         </div>
 
-        <!-- アップデート履歴（JSONから自動で読み込まれます） -->
+        <!-- アップデート履歴 -->
         <div class="updates-card">
             <h2>アップデート履歴</h2>
             <div id="update-list">
@@ -475,7 +471,6 @@
                 「ここをこうしてほしい」「こんな機能があると便利」など、現場での気づきやご感想をぜひお寄せください。<br>
                 今後のアップデートの参考にさせていただきます。</p>
             
-            <!-- Googleフォームへのリンクボタン -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUwPoxr3tHEIRoGPKgss1AF9KYRqTbcAhsZQwKbeTSWRttYw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="download-btn" style="background-color: var(--primary-dark); font-size: 1rem; padding: 12px 30px;">
                 📝 意見・要望フォームを開く
             </a>
@@ -487,10 +482,9 @@
     </footer>
 
     <script>
-        // updates.json から自動でアップデート履歴を読み込んで表示するスクリプト
         async function loadUpdates() {
             try {
-                const response = await fetch('updates.json?t=' + Date.now()); // キャッシュ防止用クエリ付き
+                const response = await fetch('updates.json?t=' + Date.now());
                 if (!response.ok) throw new Error('データが見つかりません');
                 const updates = await response.json();
                 

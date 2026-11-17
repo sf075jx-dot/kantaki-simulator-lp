@@ -120,9 +120,9 @@
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
-            padding: 16px 40px;
+            padding: 16px 32px;
             border-radius: 50px;
             text-decoration: none;
             box-shadow: 0 6px 20px rgba(77, 182, 172, 0.4);
@@ -133,6 +133,26 @@
             background-color: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(77, 182, 172, 0.6);
+        }
+
+        /* Windowsボタン専用ホバー */
+        .win-btn {
+            background-color: #0078D4;
+            box-shadow: 0 6px 20px rgba(0, 120, 212, 0.35);
+        }
+        .win-btn:hover {
+            background-color: #005a9e;
+            box-shadow: 0 8px 25px rgba(0, 120, 212, 0.5);
+        }
+
+        /* Macボタン専用ホバー */
+        .mac-btn {
+            background-color: #334155;
+            box-shadow: 0 6px 20px rgba(51, 65, 85, 0.35);
+        }
+        .mac-btn:hover {
+            background-color: #1e293b;
+            box-shadow: 0 8px 25px rgba(51, 65, 85, 0.5);
         }
 
         .version-info {
@@ -353,10 +373,15 @@
             <p>お使いのパソコンのOSに合わせてダウンロードしてください。<br>（自動アップデート機能搭載）</p>
             
             <!-- 2つのボタンを横並びにするコンテナ -->
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
                 <!-- Windows版ボタン -->
-                <a href="https://raw.githubusercontent.com/sf075jx-dot/kantaki-simulator-lp/main/downloads/setup.exe" class="download-btn win-btn" style="background-color: #0078D4; box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);">
+                <a href="https://raw.githubusercontent.com/sf075jx-dot/kantaki-simulator-lp/main/downloads/setup.exe" class="download-btn win-btn">
                     🪟 Windows版 (setup.exe)
+                </a>
+
+                <!-- Mac版ボタン -->
+                <a href="https://github.com/sf075jx-dot/kantaki-simulator-lp/releases/latest/download/KantakiSimulator-Installer.dmg" class="download-btn mac-btn">
+                    🍎 Mac版 (.dmg)
                 </a>
             </div>
 
@@ -390,8 +415,10 @@
                     💡 <strong>Google Chrome</strong>でのダウンロードを推奨しております。
                 </p>
                 <p class="notice-sub">
-                    ※ダウンロード時や実行時にセキュリティ警告が表示される場合があります。<br>
-                    <a href="download-help.html" target="_blank" rel="noopener noreferrer">セキュリティ警告が表示された場合はこちら（対処方法）</a>
+                    ※Mac版はダウンロード後にファイルを開き、「Applications」フォルダへドラッグしてインストールしてください。<br>
+                    ※ダウンロード時や初回起動時にセキュリティ警告（「開発元が未確認」等）が表示された場合は、<br>
+                    Macではアプリアイコンを<strong>右クリック ＞「開く」</strong>から起動してください。<br>
+                    <a href="download-help.html" target="_blank" rel="noopener noreferrer">詳細な対処方法はこちら（ヘルプページ）</a>
                 </p>
             </div>
         </div>

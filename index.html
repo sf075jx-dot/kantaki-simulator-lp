@@ -13,6 +13,10 @@
             --bg-color: #f4fbfb;      /* 全体のふんわりした背景色 */
         }
 
+        html {
+            scroll-behavior: smooth; /* ページ内リンクを滑らかにスクロール */
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -159,12 +163,6 @@
         .mac-btn:hover {
             background-color: #1a202c;
             box-shadow: 0 8px 25px rgba(45, 55, 72, 0.5);
-        }
-
-        .version-info {
-            font-size: 0.85rem;
-            color: #90a4ae;
-            margin-top: 15px;
         }
 
         /* 使い方セクション */
@@ -352,6 +350,91 @@
             color: #78909c;
         }
 
+        /* ★ 利用規約・免責事項（スクロールボックス） */
+        .terms-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
+            margin-top: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .terms-section h2 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .terms-scroll-box {
+            max-height: 260px; /* スクロール領域の高さ */
+            overflow-y: auto;
+            background: #f9fdfd;
+            border: 1px solid #b2ebf2;
+            border-radius: 10px;
+            padding: 20px 22px;
+            font-size: 0.86rem;
+            color: #455a64;
+            line-height: 1.75;
+        }
+
+        /* スクロールバーの見た目（WebKit系ブラウザ） */
+        .terms-scroll-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terms-scroll-box::-webkit-scrollbar-track {
+            background: #eef8f8;
+            border-radius: 4px;
+        }
+
+        .terms-scroll-box::-webkit-scrollbar-thumb {
+            background: #80cbc4;
+            border-radius: 4px;
+        }
+
+        .terms-scroll-box::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        .terms-article {
+            margin-bottom: 18px;
+        }
+
+        .terms-article:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms-article h3 {
+            font-size: 0.94rem;
+            color: var(--primary-dark);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+
+        .terms-article ul {
+            padding-left: 20px;
+            margin-top: 4px;
+        }
+
+        .terms-article li {
+            margin-bottom: 4px;
+        }
+
+        .terms-highlight {
+            background: #e0f2f1;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 6px;
+            color: #00695c;
+            font-size: 0.84rem;
+        }
+
         /* フッター */
         footer {
             text-align: center;
@@ -379,20 +462,25 @@
             <p>お使いのパソコンのOSに合わせてダウンロードしてください。<br>（自動アップデート機能搭載）</p>
             
             <!-- 2つのボタンを横並びにするコンテナ -->
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 12px;">
                 <!-- Windows版ボタン -->
                 <a href="https://raw.githubusercontent.com/sf075jx-dot/kantaki-simulator-lp/main/downloads/setup.exe" class="download-btn win-btn">
-                    Windows版 (setup.exe)
+                    🪟 Windows版 (setup.exe)
                 </a>
 
                 <!-- Mac版ボタン -->
                 <a href="https://github.com/sf075jx-dot/kantaki-simulator-lp/releases/latest/download/KantakiSimulator-Installer.dmg" class="download-btn mac-btn">
-                    Mac版 (Installer.dmg)
+                    🍎 Mac版 (Installer.dmg)
                 </a>
             </div>
 
+            <!-- 同一ページ内の規約ボックスへスクロール移動するリンク -->
+            <p style="font-size: 0.8rem; color: #78909c; margin-bottom: 20px;">
+                ※ダウンロードおよびご利用をもって、<a href="#terms-box" style="color: #00897b; font-weight: bold; text-decoration: underline;">利用規約・免責事項</a>に同意したものとみなします。
+            </p>
+
             <!-- マニュアルPDFダウンロードボタン -->
-            <div style="text-align: center; margin: 30px 0 10px 0;">
+            <div style="text-align: center; margin: 24px 0 10px 0;">
                 <a href="manual.pdf" target="_blank" style="
                     display: inline-flex;
                     align-items: center;
@@ -514,9 +602,76 @@
                 📝 意見・要望フォームを開く
             </a>
         </div>
+
+        <!-- ★ 同一ページ内スクロール形式の利用規約・免責事項ボックス -->
+        <div class="terms-section" id="terms-box">
+            <h2>利用規約・免責事項</h2>
+            <p style="font-size: 0.82rem; color: #78909c; text-align: center; margin-bottom: 12px;">
+                ※枠内をスクロールして全文をご確認いただけます
+            </p>
+            <div class="terms-scroll-box">
+                <div class="terms-article">
+                    <p>この利用規約（以下「本規約」）は、「かんたき あんしん料金なび」（デスクトップアプリ版・ブラウザ版および関連ドキュメントを含み、以下「本アプリ」）の利用条件を定めるものです。利用者の皆さまには、本規約に同意いただいた上で本アプリをご利用いただきます。</p>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第1条（本アプリの目的および計算結果の免責）</h3>
+                    <p>本アプリは、看護小規模多機能型居宅介護施設における利用料金の概算をシミュレーションし、利用者さまやご家族への説明補助を行うことを目的としています。</p>
+                    <div class="terms-highlight">
+                        <strong>【重要：計算結果に関する免責】</strong><br>
+                        本アプリで算出される金額は、設定された単価・加算率等に基づく<strong>「目安（概算）」</strong>です。介護保険制度の法改正、地域区分の改定、各種加減算の算定要件、端数処理の違い等により、実際の介護給付費明細や請求金額と異なる場合があります。実際の請求・契約にあたっては、必ず各事業所の正規の請求システムまたは公的基準をご確認ください。
+                    </div>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第2条（損害賠償等の免責）</h3>
+                    <ul>
+                        <li>本アプリは個人によって開発・無償提供されており、特定の動作環境における完全性、正確性、有用性を保証するものではありません。</li>
+                        <li>本アプリの利用、または利用できなかったこと（計算誤差、システムの不具合、アップデートによる変更等を含む）により生じた直接的・間接的な損害やトラブルについて、開発者は一切の責任を負いません。</li>
+                    </ul>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第3条（データの保存とプライバシーの取り扱い）</h3>
+                    <p>本アプリは利用者のプライバシーおよび業務情報の保護を最優先に設計されています。</p>
+                    <ul>
+                        <li>本アプリ内で設定・入力された施設名、ロゴ画像、単価・加算マスタ、およびシミュレーション結果のデータは、<strong>すべて利用者のパソコンまたはブラウザ内（ローカル環境）にのみ保存</strong>されます。</li>
+                        <li>入力された施設情報やシミュレーション内容が、開発者の管理する外部サーバー等へ送信・収集されることは一切ありません。</li>
+                        <li>端末の故障、ブラウザのキャッシュ削除、アプリのアンインストール等による設定データの消失について、開発者は復旧の義務や責任を負いません。必要に応じて設定データのバックアップを行ってください。</li>
+                    </ul>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第4条（禁止事項）</h3>
+                    <p>利用者は、本アプリの利用にあたり、以下の行為を行ってはなりません。</p>
+                    <ul>
+                        <li>本アプリのプログラムまたは配布ファイルを無断で改変し、再配布または商用販売する行為（事業所内や業務上の共有・利用は問題ありません）。</li>
+                        <li>本アプリの配信サーバー（GitHub等）に過度な負荷をかける行為、または運営を妨害する行為。</li>
+                        <li>法令または公序良俗に反する目的で本アプリを利用する行為。</li>
+                    </ul>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第5条（サービスの変更・中断・終了）</h3>
+                    <p>開発者は、利用者への事前の通知なく、本アプリの機能追加、仕様変更、公開の一時中断または終了を行うことができるものとします。</p>
+                </div>
+
+                <div class="terms-article">
+                    <h3>第6条（規約の変更）</h3>
+                    <p>開発者は、必要と判断した場合には、本規約をいつでも変更できるものとします。変更後の本規約は、本ウェブサイト上に掲載した時点から効力を生じるものとします。</p>
+                </div>
+
+                <div style="text-align: right; font-size: 0.8rem; color: #90a4ae; margin-top: 12px;">
+                    制定日：2026年11月17日
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
+        <p style="margin-bottom: 6px;">
+            <a href="#terms-box" style="color: #78909c; text-decoration: underline;">利用規約・免責事項</a>
+        </p>
         <p>&copy; 2026 かんたき あんしん料金なび All Rights Reserved.</p>
     </footer>
 

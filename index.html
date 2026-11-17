@@ -91,17 +91,23 @@
             font-size: 0.85rem;
             color: #546e7a;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .notice-main {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--primary-dark);
         }
 
         .notice-sub {
-            font-size: 0.8rem;
-            color: #78909c;
+            font-size: 0.82rem;
+            color: #607d8b;
+            text-align: left;
+            background: #f7fcfc;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid #e0f2f1;
+            margin-top: 10px;
         }
 
         .notice-sub a {
@@ -120,9 +126,9 @@
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            padding: 16px 32px;
+            padding: 15px 32px;
             border-radius: 50px;
             text-decoration: none;
             box-shadow: 0 6px 20px rgba(77, 182, 172, 0.4);
@@ -135,24 +141,24 @@
             box-shadow: 0 8px 25px rgba(77, 182, 172, 0.6);
         }
 
-        /* Windowsボタン専用ホバー */
         .win-btn {
             background-color: #0078D4;
             box-shadow: 0 6px 20px rgba(0, 120, 212, 0.35);
         }
+
         .win-btn:hover {
             background-color: #005a9e;
             box-shadow: 0 8px 25px rgba(0, 120, 212, 0.5);
         }
 
-        /* Macボタン専用ホバー */
         .mac-btn {
-            background-color: #334155;
-            box-shadow: 0 6px 20px rgba(51, 65, 85, 0.35);
+            background-color: #2d3748;
+            box-shadow: 0 6px 20px rgba(45, 55, 72, 0.35);
         }
+
         .mac-btn:hover {
-            background-color: #1e293b;
-            box-shadow: 0 8px 25px rgba(51, 65, 85, 0.5);
+            background-color: #1a202c;
+            box-shadow: 0 8px 25px rgba(45, 55, 72, 0.5);
         }
 
         .version-info {
@@ -373,7 +379,7 @@
             <p>お使いのパソコンのOSに合わせてダウンロードしてください。<br>（自動アップデート機能搭載）</p>
             
             <!-- 2つのボタンを横並びにするコンテナ -->
-            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
                 <!-- Windows版ボタン -->
                 <a href="https://raw.githubusercontent.com/sf075jx-dot/kantaki-simulator-lp/main/downloads/setup.exe" class="download-btn win-btn">
                     🪟 Windows版 (setup.exe)
@@ -381,7 +387,7 @@
 
                 <!-- Mac版ボタン -->
                 <a href="https://github.com/sf075jx-dot/kantaki-simulator-lp/releases/latest/download/KantakiSimulator-Installer.dmg" class="download-btn mac-btn">
-                    🍎 Mac版 (.dmg)
+                    🍎 Mac版 (Installer.dmg)
                 </a>
             </div>
 
@@ -414,12 +420,18 @@
                 <p class="notice-main">
                     💡 <strong>Google Chrome</strong>でのダウンロードを推奨しております。
                 </p>
-                <p class="notice-sub">
-                    ※Mac版はダウンロード後にファイルを開き、「Applications」フォルダへドラッグしてインストールしてください。<br>
-                    ※ダウンロード時や初回起動時にセキュリティ警告（「開発元が未確認」等）が表示された場合は、<br>
-                    Macではアプリアイコンを<strong>右クリック ＞「開く」</strong>から起動してください。<br>
-                    <a href="download-help.html" target="_blank" rel="noopener noreferrer">詳細な対処方法はこちら（ヘルプページ）</a>
-                </p>
+                <div class="notice-sub">
+                    <p style="margin-bottom: 8px; font-size: 0.82rem; color: #546e7a;">
+                        <strong>【Windows版をご利用の方】</strong><br>
+                        ダウンロード時や実行時にセキュリティ警告が表示される場合があります。<br>
+                        <a href="download-help.html" target="_blank" rel="noopener noreferrer">セキュリティ警告が表示された場合はこちら（対処方法）</a>
+                    </p>
+                    <p style="margin-bottom: 0; font-size: 0.82rem; color: #546e7a;">
+                        <strong>【Mac版をご利用の方】</strong><br>
+                        ダウンロード後にファイルを開き、アプリアイコンを「Applications」フォルダへドラッグしてインストールしてください。<br>
+                        初回起動時に「マルウェアが含まれていないことを検証できませんでした」と表示された場合は、警告を閉じたあと画面左上の <strong> ＞「システム設定」＞「プライバシーとセキュリティ」</strong> を一番下までスクロールし、<strong>「このまま開く」</strong> をクリックしてください。
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -461,7 +473,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>比較・印刷する</h3>
-                        <p>「比較に追加する」ボタンでカード化し、必要に応じて専用のPDF印刷や保存を行います。</p>
+                        <p>「比較に追加する」ボタンでカード化し、後から条件の再編集や専用のPDF印刷・保存を行います。</p>
                     </div>
                 </div>
             </div>
